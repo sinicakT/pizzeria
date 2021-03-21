@@ -43,11 +43,16 @@ export default {
 }
 </script>
 
-<style scoped>
-@import "assets/scss/variables.scss";
+<style lang="scss">
 
-.main-container {
-  color: var(--v-secondary-base);
+//.theme--dark.v-application {
+//  background-color: var(--v-background-base, #121212) ;
+//}
+
+.v-app {
+  font-family: "FredericatheGreat", sans-serif !important;
+  background: var(--v-background-base) !important;
+  color: var(--v-secondary-base) !important;
   overflow-y: auto !important;
   margin-top: 8vh;
 }

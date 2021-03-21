@@ -147,6 +147,10 @@ export default {
   }
 }
 
+.v-navigation-drawer {
+  background: $drawer-background !important;
+}
+
 .manual-v-layout {
   padding-top: 18vh;
   max-height: 600px;

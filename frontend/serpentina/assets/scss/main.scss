@@ -1,15 +1,17 @@
+@import 'animations';
+
 @font-face {
   font-family: "FredericatheGreat";
   src: local("FredericatheGreat"),
   url(~/assets/static/FrederickatheGreat-Regular.ttf) format("truetype");
 }
 
-.font-default {
-  font-family: "Frederica", sans-serif;
+.html {
+  font-family: "FredericatheGreat", sans-serif !important;
 }
 
 #app {
-  color: var(--v-secondary-base);
+  color: var(--v-secondary-base) !important;
   overflow-y: auto !important;
 
   .v-main {

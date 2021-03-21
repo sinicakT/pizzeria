@@ -1,7 +1,7 @@
 //$navbar-background: transparentize(#00695C, 0.03);
 //$drawer-background: transparentize(#00695C, 0.2);
-$navbar-background: transparentize(#005045, 0.03);
-$drawer-background: transparentize(#005045, 0.2);
+$navbar-background: rgba(var(--v-header_background-base), 0.97);
+$drawer-background: rgba(var(--v-header_background-base), 0.8);
 
 $grid-breakpoints: (
   'xs': 0,
@@ -11,14 +11,18 @@ $grid-breakpoints: (
   'xl': 1920px - 16px
 );
 $font-size-root: 24px;
-$material-dark: (
-  //'background': #121212,
-  'background': var(--v-primary-base),
-  'color': var(--v-secondary-base),
-  'text-color': var(--v-secondary-base),
-  btn: var(--v-secondary-base),
-  navigation-drawer: $drawer-background
-);
+$body-font-family: "FredericatheGreat", sans-serif !important;
+
+//$material-dark: (
+//  //'background': #121212,
+//  'background': var(--v-primary-base),
+//  'color': var(--v-secondary-base),
+//  'text-color': var(--v-secondary-base),
+//  btn: var(--v-secondary-base),
+//  navigation-drawer: $drawer-background
+//);
+
+//$material-dark
 
 //$material-dark: map-merge($material-dark, (
 //  sheet: (color: var(--v-secondary-base)),
@@ -27,3 +31,11 @@ $material-dark: (
 
 // Required for modifying core defaults
 @import '~vuetify/src/styles/styles.sass';
+
+$material-light: map-merge($material-light, (
+  'background': var(--v-background-base, map-get($material-light, 'background')) ,
+));
+$material-dark: map-merge($material-dark, (
+  'background': var(--v-background-base, map-get($material-dark, 'background')) ,
+));
+
