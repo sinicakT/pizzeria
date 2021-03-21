@@ -1,0 +1,29 @@
+//$navbar-background: transparentize(#00695C, 0.03);
+//$drawer-background: transparentize(#00695C, 0.2);
+$navbar-background: transparentize(#005045, 0.03);
+$drawer-background: transparentize(#005045, 0.2);
+
+$grid-breakpoints: (
+  'xs': 0,
+  'sm': 600px,
+  'md': 960px,
+  'lg': 1280px - 16px,
+  'xl': 1920px - 16px
+);
+$font-size-root: 24px;
+$material-dark: (
+  //'background': #121212,
+  'background': var(--v-primary-base),
+  'color': var(--v-secondary-base),
+  'text-color': var(--v-secondary-base),
+  btn: var(--v-secondary-base),
+  navigation-drawer: $drawer-background
+);
+
+//$material-dark: map-merge($material-dark, (
+//  sheet: (color: var(--v-secondary-base)),
+//  )
+//);
+
+// Required for modifying core defaults
+@import '~vuetify/src/styles/styles.sass';

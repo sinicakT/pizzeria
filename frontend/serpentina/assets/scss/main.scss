@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "FredericatheGreat";
+  src: local("FredericatheGreat"),
+  url(~/assets/static/FrederickatheGreat-Regular.ttf) format("truetype");
+}
+
+.font-default {
+  font-family: "Frederica", sans-serif;
+}
+
+#app {
+  color: var(--v-secondary-base);
+  overflow-y: auto !important;
+
+  .v-main {
+    margin-top: 80px;
+  }
+}
+
+@media (min-width: 960px) {
+  .container {
+    max-width: 1200px;
+  }
+}
