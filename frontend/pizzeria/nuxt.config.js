@@ -6,8 +6,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - serpentina',
-    title: 'serpentina',
+    titleTemplate: '%s - pizzeria',
+    title: 'pizzeria',
     htmlAttrs: {
       lang: 'en'
     },

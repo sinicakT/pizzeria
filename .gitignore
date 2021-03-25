@@ -93,4 +93,4 @@ sw.*
 /backend/venv/
 .directory
 
-/frontend/serpentina/node_modules
+/frontend/pizzeria/node_modules
