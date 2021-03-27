@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Pizza, Ingredient
-from .serializers import PizzaSerializer, IngredientsSerializer
+from .models import Pizza, Ingredient, Menu
+from .serializers import PizzaSerializer, IngredientsSerializer, MenuSerializer
 
 
 class PizzaViewSet(viewsets.ModelViewSet):
@@ -12,4 +12,10 @@ class PizzaViewSet(viewsets.ModelViewSet):
 class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientsSerializer
+    http_method_names = ['get']
+
+
+class MenuViewSet(viewsets.ModelViewSet):
+    queryset = Menu.objects.all()
+    serializer_class = MenuSerializer
     http_method_names = ['get']
