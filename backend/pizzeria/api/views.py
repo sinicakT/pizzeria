@@ -28,7 +28,8 @@ class Offer(viewsets.ViewSet):
     def list(self, request, *args, **kwargs):
         offer = {
             'pizza': self.extract_pizza(),
-            'menu': self.extract_menu()
+            'menu': self.extract_menu(),
+            'ingredients_list': self.get_ingredients_list()
         }
 
         return Response(offer)
@@ -40,3 +41,7 @@ class Offer(viewsets.ViewSet):
     def extract_menu(self):
         menu = Menu.objects.all()
         return MenuSerializer(menu, many=True).data
+
+    def get_ingredients_list(self):
+        ingredients = Ingredient.objects.all()
+        return IngredientsSerializer(ingredients, many=True).data

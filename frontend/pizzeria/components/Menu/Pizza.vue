@@ -1,10 +1,13 @@
 <template>
   <v-container class="align-center">
-    <h1>Pizze</h1>
+    <h1 class="text-center">Pizze</h1>
+    <div v-if="pizzas.length < 1">
+      Ľutujeme, taká pizza neexistuje. Skúste upraviť filter.
+    </div>
     <v-row v-for="pizza in pizzas" :key="pizza.id" class="py-4">
       <v-col cols="6" md="8">
         <v-row class="font-weight-bold">
-          <span>{{pizza.name}}</span>
+          <span>{{ pizza.number }}. {{pizza.name}}</span>
         </v-row>
         <v-row class="text-body-2 text-lowercase">
           <span v-for="(ingredient, index) in pizza.ingredients_arr" :key="pizza.id + '.' + ingredient">
@@ -39,11 +42,14 @@
 <script>
 export default {
   name: "Pizza",
-  computed: {
-    pizzas() {
-      return this.$store.state.offer.pizzas
-    }
-  }
+  props: {
+    pizzas: [] = []
+  },
+  // computed: {
+  //   pizzas() {
+  //     return this.$store.state.offer.pizzas
+  //   }
+  // }
 }
 </script>
 

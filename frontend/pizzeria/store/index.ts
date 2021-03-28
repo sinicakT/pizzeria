@@ -5,6 +5,7 @@ export const state = () => ({
     loaded: false,
     pizzas: [],
     ingredients: [],
+    ingredients_list: [],
     menu: []
   }
 });
@@ -23,6 +24,7 @@ export const mutations = {
     state.offer = {
       pizzas: data['pizzas'],
       ingredients: data['ingredients'],
+      ingredients_list: data['ingredients_list'],
       menu: data['menu']
 
     }
@@ -61,6 +63,7 @@ export const actions = {
           'loaded': true,
           'pizzas': pizzas,
           'ingredients': [],
+          'ingredients_list': res.data.ingredients_list,
           'menu': res.data.menu
         });
       })

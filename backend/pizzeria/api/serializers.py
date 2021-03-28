@@ -15,7 +15,7 @@ class IngredientsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ingredient
-        fields = ('name', )
+        fields = ('id', 'name')
 
 
 class PizzaSizeSerializer(serializers.ModelSerializer):
