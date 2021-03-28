@@ -1,13 +1,17 @@
 <template>
-  <div>
-    <h1> Ponuka </h1>
-    <v-btn color="black" @click="fetchAllData">Load data</v-btn>
-  </div>
+  <v-container>
+    <Offer />
+  </v-container>
 </template>
 
 <script>
+import Offer from "../components/Menu/Offer";
+
 export default {
   name: 'ponuka',
+  components: {
+    Offer
+  },
   methods: {
     fetchAllData() {
       this.$store.dispatch('fetchAllData')

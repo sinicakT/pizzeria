@@ -14,7 +14,7 @@
       <div class="hidden-md-and-down ml-md-4 ml-lg-8 menu-box">
         <v-list nav>
                 <span v-for="item in menuItems" :key="item.title" class="mx-lg-2">
-                  <v-btn text class="secondary--text text--lighten-1 font-default" router :to="item.link"> {{
+                  <v-btn text class="secondary--text text--lighten-1 font-default font-weight-bold" router :to="item.link"> {{
                       item.title
                     }} </v-btn>
                 </span>
@@ -50,7 +50,7 @@
                    router
                    :to="item.link"
                    my-auto
-                   class="secondary--text text--lighten-1 font-default"
+                   class="secondary--text text--lighten-1 font-default font-weight-bold"
                    v-show="item.inDrawer"
                    :style="{
                           delay: (index * 0.1).toString() + 's',

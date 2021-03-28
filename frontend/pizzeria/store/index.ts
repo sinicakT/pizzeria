@@ -16,7 +16,7 @@ export const mutations = {
   setIngredients(state:any, ingredients:any) {
     state.offer.ingredients = ingredients
   },
-  setMenu(state:any, menu:any) {
+  setmenu(state:any, menu:any) {
     state.offer.menu = menu
   },
   setCompleteOffer(state:any, data:any) {
@@ -44,13 +44,24 @@ export const actions = {
   //     .catch(e => context.error(e))
   // },
   fetchAllData(vuexContext: any) {
-    return axios.get('http://127.0.0.1:8000/api/pizza/')
+    return axios.get('http://127.0.0.1:8000/api/menu/')
       .then(res => {
+        const pizzas: any[] = [];
+        res.data.pizza.forEach((pizza: any) => {
+          const ingredients_array: string[] = [];
+          pizza.ingredients.forEach((ingredient: any) => {
+            ingredients_array.push(ingredient.name)
+          })
+          pizzas.push({
+            ...pizza,
+            'ingredients_arr': ingredients_array
+          })
+        })
         vuexContext.commit('setCompleteOffer', {
           'loaded': true,
-          'pizzas': res.data,
+          'pizzas': pizzas,
           'ingredients': [],
-          'menu': []
+          'menu': res.data.menu
         });
       })
       .catch(e => console.log(e))
@@ -61,7 +72,7 @@ export const actions = {
   setIngredients(vuexContext:any, ingredients:any) {
     vuexContext.commit('setPizzas', ingredients)
   },
-  setMenu(vuexContext:any, menu:any) {
+  setmenu(vuexContext:any, menu:any) {
     vuexContext.commit('setPizzas', menu)
   },
   setCompleteOffer(vuexContext:any, data:any) {
