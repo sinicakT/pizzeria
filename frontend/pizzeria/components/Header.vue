@@ -3,12 +3,13 @@
     <v-app-bar fixed outlined :inverted-scroll="invertedScroll" scroll-threshold="50">
       <v-toolbar-title id="logo">
         <router-link to="/" tag="span" style="cursor:pointer">
-          <v-img
-            class="mr-3"
-            :src="require('../assets/logo_line.svg')"
-            height="55"
-            width="160"
-          ></v-img>
+          Pizza Mizza
+<!--          <v-img-->
+<!--            class="mr-3"-->
+<!--            :src="require('../assets/logo_line.svg')"-->
+<!--            height="55"-->
+<!--            width="160"-->
+<!--          ></v-img>-->
         </router-link>
       </v-toolbar-title>
       <div class="hidden-md-and-down ml-md-4 ml-lg-8 menu-box">

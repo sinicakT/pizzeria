@@ -7,7 +7,8 @@ export const state = () => ({
     ingredients: [],
     ingredients_list: [],
     menu: []
-  }
+  },
+  gallery: []
 });
 
 export const mutations = {
@@ -28,6 +29,10 @@ export const mutations = {
       menu: data['menu']
 
     }
+  },
+  setGallery(state: any, data: any) {
+    state.gallery = data
+
   }
 };
 
@@ -69,6 +74,33 @@ export const actions = {
       })
       .catch(e => console.log(e))
   },
+  fetchGallery(vuexContext:any, images:any) {
+    images = [
+      {
+        'url': require('@/assets/images/pizzeria/pizza1.jpg')
+      },
+      {
+        'url': require('@/assets/images/pizzeria/pizza2.jpg')
+      },
+      {
+        'url': require('@/assets/images/pizzeria/pizza3.jpg')
+      },
+      {
+        'url': require('@/assets/images/pizzeria/pizza4.jpg')
+      },
+      {
+        'url': require('@/assets/images/pizzeria/pizza5.jpg')
+      },
+      {
+        'url': require('@/assets/images/pizzeria/pizza6.jpg')
+      },
+      {
+        'url': require('@/assets/images/pizzeria/pizza7.jpg')
+      },
+    ];
+
+    vuexContext.commit('setGallery', images)
+  },
   setPizzas(vuexContext:any, pizzas:any) {
     vuexContext.commit('setPizzas', pizzas)
   },
@@ -95,5 +127,8 @@ export const getters = () => ({
   },
   completeOffer(state:any) {
     return state.offer
+  },
+  gallery(state:any) {
+    return state.gallery
   }
 })
