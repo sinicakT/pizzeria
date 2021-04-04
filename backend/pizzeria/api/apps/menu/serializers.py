@@ -1,14 +1,8 @@
 from rest_framework import serializers
 from operator import itemgetter
-from .models import Pizza, Ingredient, PizzaSize, Size, Menu, MenuItem
+from .models import Pizza, Ingredient, PizzaSize, Offer, OfferItem
 import json
 import re
-
-
-class SizeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Size
-        fields = ('name', )
 
 
 class IngredientsSerializer(serializers.ModelSerializer):
@@ -54,22 +48,22 @@ class PizzaSerializer(serializers.ModelSerializer):
         return allergens
 
 
-class MenuItemSerializer(serializers.ModelSerializer):
+class OfferItemSerializer(serializers.ModelSerializer):
 
     capacity = serializers.SerializerMethodField()
 
     class Meta:
-        model = MenuItem
+        model = OfferItem
         fields = ('name', 'description', 'capacity', 'price')
 
     def get_capacity(self, item):
         return str(item.capacity) + item.capacity_unit.unit_code
 
 
-class MenuSerializer(serializers.ModelSerializer):
+class OfferSerializer(serializers.ModelSerializer):
 
-    menu_item = MenuItemSerializer(many=True)
+    offer_item = OfferItemSerializer(many=True)
 
     class Meta:
-        model = Menu
-        fields = ('name', 'menu_item')
+        model = Offer
+        fields = ('name', 'offer_item')

@@ -8,24 +8,6 @@ from wagtail.core.models import Page, Orderable
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 
 
-class Unit(models.Model):
-
-    class Meta:
-        verbose_name = 'Jednotka'
-        verbose_name_plural = 'Jednotky'
-
-    def __str__(self):
-        return self.unit_code
-
-    name = models.CharField(verbose_name='Názov', max_length=30)
-    unit_code = models.CharField(verbose_name='Jednotka', max_length=3)
-
-    panels = [
-        FieldPanel('name'),
-        FieldPanel('unit_code'),
-    ]
-
-
 class Ingredient(models.Model):
 
     class Meta:
@@ -65,22 +47,11 @@ class Allergen(models.Model):
     def __str__(self):
         return str(self.number) + '. ' + self.name
 
-class Size(models.Model):
-
-    class Meta:
-        verbose_name = 'Veľkosť'
-        verbose_name_plural = 'Veľkosti'
-
-    name = models.CharField(verbose_name='Názov', max_length=30, default=None)
-
-    def __str__(self):
-        return str(self.name)
-
 
 class PizzaSize(Orderable):
 
-    pizza = ParentalKey('api.Pizza', related_name='size_values', blank=True, default=None)
-    name = models.ForeignKey('api.Size', verbose_name='Veľkosť', related_name='size', on_delete=models.SET_NULL, null=True)
+    pizza = ParentalKey('menu.Pizza', related_name='size_values', blank=True, default=None)
+    name = models.ForeignKey('crud.Size', verbose_name='Veľkosť', related_name='size', on_delete=models.SET_NULL, null=True)
     weight = models.IntegerField(verbose_name='Hmotnosť')
     price = models.DecimalField(verbose_name='Cena', max_digits=4, decimal_places=2)
 
@@ -127,20 +98,20 @@ class Pizza(ClusterableModel):
     #     # InlinePanel('size_values', label='Hmotnosti'),
 
 
-class MenuItem(Orderable):
+class OfferItem(Orderable):
 
     def __str__(self):
         return self.name
 
-    menu = ParentalKey('api.Menu', related_name='menu_item', blank=True, default=None)
+    offer = ParentalKey('menu.Offer', related_name='offer_item', blank=True, default=None)
     name = models.CharField(verbose_name='Názov', max_length=30)
     description = models.CharField(verbose_name='Popis', max_length=255, blank=True)
     capacity = models.FloatField(verbose_name='Hmotnosť')
-    capacity_unit = models.ForeignKey('api.Unit', verbose_name='Jednotka', related_name='unit', on_delete=models.SET_NULL, null=True)
+    capacity_unit = models.ForeignKey('crud.Unit', verbose_name='Jednotka', related_name='unit', on_delete=models.SET_NULL, null=True)
     price = models.DecimalField(verbose_name='Cena', max_digits=4, decimal_places=2)
 
 
-class Menu(ClusterableModel):
+class Offer(ClusterableModel):
 
     def __str__(self):
         return self.name
@@ -149,5 +120,6 @@ class Menu(ClusterableModel):
 
     panels = [
         FieldPanel('name'),
-        InlinePanel('menu_item', label="Ponuka")
+        InlinePanel('offer_item', label="Ponuka")
     ]
+

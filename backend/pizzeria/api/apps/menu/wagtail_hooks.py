@@ -1,6 +1,6 @@
 from wagtail.contrib.modeladmin.options import (
     ModelAdmin, modeladmin_register)
-from .models import Pizza, Size, Allergen, Ingredient, Unit, Menu
+from .models import Pizza, Offer, Ingredient, Allergen
 
 
 class PizzaAdmin(ModelAdmin):
@@ -15,8 +15,8 @@ class PizzaAdmin(ModelAdmin):
     search_fields = ('number', 'name')
 
 
-class MenuAdmin(ModelAdmin):
-    model = Menu
+class OfferAdmin(ModelAdmin):
+    model = Offer
     menulabel = 'Ostatná ponuka'
     menu_icon = 'pilcrow'
     menu_order = 100
@@ -50,33 +50,7 @@ class AllergenAdmin(ModelAdmin):
     search_fields = ('name', )
 
 
-class SizeAdmin(ModelAdmin):
-    model = Size
-    menulabel = 'Veľkosti'
-    # menu_icon = 'pilcrow'
-    menu_order = 100
-    as_to_settings_menu = True
-    exclude_from_explorer = True
-    list_display = ('name', )
-    # list_filter = ('name', )
-    search_fields = ('name', )
-
-
-class UnitAdmin(ModelAdmin):
-    model = Unit
-    menu_label = 'Jednotky'
-    # menu_icon = 'edit'
-    menu_order = 100
-    add_to_settings_menu = True
-    exclude_from_explorer = True
-    list_display = ('name', )
-    # list_filter = ('name', )
-    search_fields = ('name', )
-
-
 modeladmin_register(PizzaAdmin)
-modeladmin_register(MenuAdmin)
-modeladmin_register(SizeAdmin)
+modeladmin_register(OfferAdmin)
 modeladmin_register(IngredientAdmin)
 modeladmin_register(AllergenAdmin)
-modeladmin_register(UnitAdmin)

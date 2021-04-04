@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
 
-from .models import Pizza, Ingredient, Menu
-from .serializers import PizzaSerializer, IngredientsSerializer, MenuSerializer
+from .models import Pizza, Ingredient, Offer
+from .serializers import PizzaSerializer, IngredientsSerializer, OfferSerializer
 
 
 class PizzaViewSet(viewsets.ModelViewSet):
@@ -17,30 +17,30 @@ class IngredientViewSet(viewsets.ModelViewSet):
     http_method_names = ['get']
 
 
-class MenuViewSet(viewsets.ModelViewSet):
-    queryset = Menu.objects.all()
-    serializer_class = MenuSerializer
+class OfferViewSet(viewsets.ModelViewSet):
+    queryset = Offer.objects.all()
+    serializer_class = OfferSerializer
     http_method_names = ['get']
 
 
-class Offer(viewsets.ViewSet):
+class Menu(viewsets.ViewSet):
 
     def list(self, request, *args, **kwargs):
-        offer = {
+        menu = {
             'pizza': self.extract_pizza(),
-            'menu': self.extract_menu(),
+            'offer': self.extract_offer(),
             'ingredients_list': self.get_ingredients_list()
         }
 
-        return Response(offer)
+        return Response(menu)
 
     def extract_pizza(self):
         pizzas = Pizza.objects.all()
         return PizzaSerializer(pizzas, many=True).data
 
-    def extract_menu(self):
-        menu = Menu.objects.all()
-        return MenuSerializer(menu, many=True).data
+    def extract_offer(self):
+        offer = Offer.objects.all()
+        return OfferSerializer(offer, many=True).data
 
     def get_ingredients_list(self):
         ingredients = Ingredient.objects.all()
