@@ -1,8 +1,9 @@
 <template>
   <div>
-    <vue-masonry-wall class="gallery" :items="gallery" :options="{width: 150, padding: { default: 12, 1: 6, 2: 8}}">
+    <ModalGalleryDetail :index="index" v-model="showDetail"/>
+    <vue-masonry-wall class="gallery mx-auto" :items="gallery" :options="{width: 150, padding: { default: 12, 1: 6, 2: 8}}">
       <template v-slot:default="{item}">
-        <v-img contain :src="item.url" alt="" class="gallery-image" max-width="300" justify="space-around"/>
+        <v-img contain :src="item.preview_url" class="gallery-image" justify="space-around" @click="imageClickHandler(item.index)"/>
       </template>
     </vue-masonry-wall>
   </div>
@@ -10,16 +11,31 @@
 
 <script>
 import VueMasonryWall from 'vue-masonry-wall'
+import ModalGalleryDetail from "../components/GalleryDetail";
 
 export default {
   name: 'galeria',
   components: {
-    VueMasonryWall
+    ModalGalleryDetail,
+    VueMasonryWall,
+  },
+  data() {
+    return {
+      showDetail: false,
+      index: 0
+    }
   },
   computed: {
     gallery() {
       return this.$store.state.gallery
     }
+  },
+  methods: {
+    imageClickHandler(index) {
+      // event.preventDefault();
+      this.index = +index;
+      this.showDetail = true;
+    },
   },
   created() {
     if (this.$store.state.gallery.length < 1) {
@@ -40,7 +56,7 @@ export default {
       .masonry-item {
         width: 100%;
         align-items: stretch;
-        justify-content: center;
+        justify-content: stretch;
       }
     }
   }

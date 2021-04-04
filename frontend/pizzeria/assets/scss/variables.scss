@@ -1,7 +1,5 @@
 //$navbar-background: transparentize(#00695C, 0.03);
 //$drawer-background: transparentize(#00695C, 0.2);
-$navbar-background: rgba(var(--v-header_background-base), 0.97);
-$drawer-background: rgba(var(--v-header_background-base), 0.8);
 
 $grid-breakpoints: (
   'xs': 0,
@@ -38,4 +36,9 @@ $material-light: map-merge($material-light, (
 $material-dark: map-merge($material-dark, (
   'background': var(--v-background-base, map-get($material-dark, 'background')) ,
 ));
+
+//$navbar-background: rgba(red, 0.97);
+//$drawer-background: rgba(navy, 0.8);
+//$navbar-background: rgba(var(--v-header_background), 0.97);
+//$drawer-background: rgba(var(--v-header_background), 0.8);
 

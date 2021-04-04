@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-list rounded>
+    <v-list rounded color="primary">
       <v-list-item v-for="(ingredient, index) in ingredients" :key="index">
         <v-btn block @click="changeList(ingredient.id)" :color=btnColor(ingredient.id)>
           {{ ingredient.name }}
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     btnColor(id) {
-      return this.filterList.some(item => item === id) ? 'black' : 'header_background'
+      return this.filterList.some(item => item === id) ? 'black' : 'background darken-2'
     },
     changeList(id) {
       const index = this.filterList.indexOf(id);
@@ -40,6 +40,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
 
 </style>

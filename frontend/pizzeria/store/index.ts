@@ -31,6 +31,9 @@ export const mutations = {
     }
   },
   setGallery(state: any, data: any) {
+    data.forEach((image: any, index: number) => {
+      image.index = index
+    })
     state.gallery = data
 
   }
@@ -77,25 +80,32 @@ export const actions = {
   fetchGallery(vuexContext:any, images:any) {
     images = [
       {
-        'url': require('@/assets/images/pizzeria/pizza1.jpg')
+        'preview_url': require('@/assets/images/pizzeria/pizza1.jpg'),
+        'detail_url': require('@/assets/images/pizzeria/pizza1.jpg')
       },
       {
-        'url': require('@/assets/images/pizzeria/pizza2.jpg')
+        'preview_url': require('@/assets/images/pizzeria/pizza2.jpg'),
+        'detail_url': require('@/assets/images/pizzeria/pizza2.jpg')
       },
       {
-        'url': require('@/assets/images/pizzeria/pizza3.jpg')
+        'preview_url': require('@/assets/images/pizzeria/pizza3.jpg'),
+        'detail_url': require('@/assets/images/pizzeria/pizza3.jpg')
       },
       {
-        'url': require('@/assets/images/pizzeria/pizza4.jpg')
+        'preview_url': require('@/assets/images/pizzeria/pizza4.jpg'),
+        'detail_url': require('@/assets/images/pizzeria/pizza4.jpg')
       },
       {
-        'url': require('@/assets/images/pizzeria/pizza5.jpg')
+        'preview_url': require('@/assets/images/pizzeria/pizza5.jpg'),
+        'detail_url': require('@/assets/images/pizzeria/pizza5.jpg')
       },
       {
-        'url': require('@/assets/images/pizzeria/pizza6.jpg')
+        'preview_url': require('@/assets/images/pizzeria/pizza6.jpg'),
+        'detail_url': require('@/assets/images/pizzeria/pizza6.jpg')
       },
       {
-        'url': require('@/assets/images/pizzeria/pizza7.jpg')
+        'preview_url': require('@/assets/images/pizzeria/pizza7.jpg'),
+        'detail_url': require('@/assets/images/pizzeria/pizza7.jpg')
       },
     ];
 

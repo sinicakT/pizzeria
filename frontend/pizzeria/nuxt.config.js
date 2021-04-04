@@ -72,7 +72,6 @@ export default {
           info: '#71c5ff',
           success: '#03a9f4',
           background: '#00695C',
-          header_background: '#005045'
         }
       }
     }

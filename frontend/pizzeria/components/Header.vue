@@ -1,6 +1,6 @@
 <template>
   <nav id="navigation">
-    <v-app-bar fixed outlined :inverted-scroll="invertedScroll" scroll-threshold="50">
+    <v-app-bar fixed outlined :inverted-scroll="invertedScroll" scroll-threshold="50" color="background darken-1">
       <v-toolbar-title id="logo">
         <router-link to="/" tag="span" style="cursor:pointer">
           Pizza Mizza
@@ -37,6 +37,8 @@
                          floating
                          disable-route-watcher
                          width="100%"
+                         color="background darken-1"
+                         class="hidden-lg-and-up"
     >
       <v-layout class="manual-v-layout">
         <v-flex mx-auto
@@ -139,9 +141,11 @@ export default {
   z-index: 999;
 }
 
-.v-sheet {
-  background: $navbar-background !important;
+#navigation > .v-sheet {
+  //background: $navbar-background !important;
+  //background: var(--v-header_background-base) !important;
   z-index: 60 !important;
+  opacity: 0.95;
 
   .v-list--nav {
     background: none !important;
@@ -149,7 +153,8 @@ export default {
 }
 
 .v-navigation-drawer {
-  background: $drawer-background !important;
+  background: var(--v-drawer_background-base) !important;
+  opacity: 0.8 !important;
 }
 
 .manual-v-layout {
