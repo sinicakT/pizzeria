@@ -1,16 +1,16 @@
 <template>
   <v-container>
-    <Offer />
+    <Menu />
   </v-container>
 </template>
 
 <script>
-import Offer from "../components/Menu/Offer";
+import Menu from "../components/Menu/Menu";
 
 export default {
   name: 'ponuka',
   components: {
-    Offer
+    Menu
   },
   methods: {
     fetchAllData() {
@@ -18,7 +18,7 @@ export default {
     },
   },
   created() {
-    if (this.$store.state.offer.loaded === false) {
+    if (this.$store.state.menu.loaded === false) {
       this.$store.dispatch('fetchAllData');
     }
   }

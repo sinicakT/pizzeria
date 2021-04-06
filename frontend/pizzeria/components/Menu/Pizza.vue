@@ -47,7 +47,7 @@ export default {
   },
   // computed: {
   //   pizzas() {
-  //     return this.$store.state.offer.pizzas
+  //     return this.$store.state.menu.pizzas
   //   }
   // }
 }

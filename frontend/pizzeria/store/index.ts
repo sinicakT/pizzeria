@@ -1,32 +1,32 @@
 import axios from 'axios'
 
 export const state = () => ({
-  offer: {
+  menu: {
     loaded: false,
     pizzas: [],
     ingredients: [],
     ingredients_list: [],
-    menu: []
+    offer: []
   },
   gallery: []
 });
 
 export const mutations = {
   setPizzas(state:any, pizzas:any) {
-    state.offer.pizzas = pizzas
+    state.menu.pizzas = pizzas
   },
   setIngredients(state:any, ingredients:any) {
     state.offer.ingredients = ingredients
   },
-  setmenu(state:any, menu:any) {
-    state.offer.menu = menu
+  setOffer(state:any, menu:any) {
+    state.menu.offer = menu
   },
-  setCompleteOffer(state:any, data:any) {
-    state.offer = {
+  setCompleteMenu(state:any, data:any) {
+    state.menu = {
       pizzas: data['pizzas'],
       ingredients: data['ingredients'],
       ingredients_list: data['ingredients_list'],
-      menu: data['menu']
+      offer: data['offer']
 
     }
   },
@@ -40,19 +40,6 @@ export const mutations = {
 };
 
 export const actions = {
-  // nuxtServerInit(vuexContext:any, context:any) {
-  //   return axios.get('http://127.0.0.1:8000/api/pizza/')
-  //     .then(res => {
-  //       console.log(res);
-  //       vuexContext.commit('setCompleteOffer', {
-  //         'loaded': true,
-  //         'pizzas': res.data,
-  //         'ingredients': [],
-  //         'menu': []
-  //       });
-  //     })
-  //     .catch(e => context.error(e))
-  // },
   fetchAllData(vuexContext: any) {
     return axios.get('http://127.0.0.1:8000/api/menu/')
       .then(res => {
@@ -67,12 +54,12 @@ export const actions = {
             'ingredients_arr': ingredients_array
           })
         })
-        vuexContext.commit('setCompleteOffer', {
+        vuexContext.commit('setCompleteMenu', {
           'loaded': true,
           'pizzas': pizzas,
-          'ingredients': [],
+          'ingredients': res.data.ingredients,
           'ingredients_list': res.data.ingredients_list,
-          'menu': res.data.menu
+          'offer': res.data.offer
         });
       })
       .catch(e => console.log(e))
@@ -117,26 +104,26 @@ export const actions = {
   setIngredients(vuexContext:any, ingredients:any) {
     vuexContext.commit('setPizzas', ingredients)
   },
-  setmenu(vuexContext:any, menu:any) {
+  setOffer(vuexContext:any, menu:any) {
     vuexContext.commit('setPizzas', menu)
   },
-  setCompleteOffer(vuexContext:any, data:any) {
-    vuexContext.commit('setCompleteOfferPizzas', data)
+  setCompleteMenu(vuexContext:any, data:any) {
+    vuexContext.commit('setCompleteMenu', data)
   }
 }
 
 export const getters = () => ({
   pizzas(state:any) {
-    return state.offer.pizzas
+    return state.menu.pizzas
   },
   ingredients(state:any) {
     return state.offer.ingredients
   },
-  menu(state:any) {
-    return state.offer.menu
+  offer(state:any) {
+    return state.menu.offer
   },
-  completeOffer(state:any) {
-    return state.offer
+  menu(state:any) {
+    return state.menu
   },
   gallery(state:any) {
     return state.gallery

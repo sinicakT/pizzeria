@@ -1,71 +1,43 @@
 <template>
-  <v-container>
-<!--    <h1>Jedálny lístok</h1>-->
-    <v-row>
-      <v-col cols="10">
-        <v-row>
-          <Pizza :pizzas="sortedPizzas"/>
+  <v-container class="align-center">
+    <v-row v-for="category in offer" :key="offer.id" class="align-center" >
+      <h3 class="mx-auto">{{ category.name }}</h3>
+      <v-col cols="12">
+        <v-row v-for="(item, index) in category.offer_item" :key="offer.id + '.' + index">
+          <v-col cols="6" md="8">
+            <v-row class="font-weight-bold text-caption">
+              <span>{{ item.name }}</span>
+            </v-row>
+            <v-row class="text-body-2 text-caption">
+              <span> {{ item.description }} </span>
+            </v-row>
+          </v-col>
+          <v-col cols="6" md="4" class="py-0 text-caption">
+            <v-col cols="7" md="6" class="pa-0">
+              <span>{{ item.capacity }}</span>
+            </v-col>
+            <v-col cols="5" md="6" class="pa-0">
+              <span>{{ item.price }} €</span>
+            </v-col>
+          </v-col>
         </v-row>
-        <v-row>
-          <Ingredient/>
-        </v-row>
-        <v-row>
-          <Menu/>
-        </v-row>
-      </v-col>
-      <v-col cols="2" class="filter">
-        <IngredientsFilter @listChanged="onListChangedHandler"/>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import IngredientsFilter from "./IngredientsFilter";
-import Pizza from "./Pizza";
-import Ingredient from "./Ingredient";
-import Menu from "./Menu";
-
 export default {
   name: "Offer",
-  components: {
-    IngredientsFilter,
-    Pizza,
-    Ingredient,
-    Menu
-  },
-  data() {
-    return {
-      filterList: [] = []
-    }
-  },
-  methods: {
-    onListChangedHandler(filter) {
-      this.filterList = filter
-    },
-  },
+  // data() {
+  //   return {
+  //     offer: [] = []
+  //   }
+  // },
   computed: {
-    sortedPizzas() {
-      const fullOffer = this.$store.state.offer.pizzas
-      if (this.filterList.length < 1) {
-        return fullOffer
-      } else {
-        const filteredOffer = []
-        fullOffer.forEach((pizza) => {
-          if (this.filterList.every(filter => pizza.ingredients.some(ingredient => ingredient.id === filter))) {
-            filteredOffer.push(pizza)
-          }
-        })
-        return filteredOffer
-      }
+    offer() {
+      return this.$store.state.menu.offer
     }
   }
 }
 </script>
-
-<style lang="scss">
-  .filter {
-    display: inline;
-  }
-
-</style>

@@ -29,6 +29,7 @@ class Menu(viewsets.ViewSet):
         menu = {
             'pizza': self.extract_pizza(),
             'offer': self.extract_offer(),
+            'ingredients': self.get_ingredients(),
             'ingredients_list': self.get_ingredients_list()
         }
 
@@ -45,3 +46,17 @@ class Menu(viewsets.ViewSet):
     def get_ingredients_list(self):
         ingredients = Ingredient.objects.all()
         return IngredientsSerializer(ingredients, many=True).data
+
+    def get_ingredients(self):
+        ingredients = Ingredient.objects.all()
+        ingredients_list = {}
+
+        for ingredient in ingredients:
+            key = str(ingredient.price_extra)
+            if key not in ingredients_list.keys():
+                ingredients_list[key] = ingredient.name
+            else:
+                ingredients_list[key] += ', ' + ingredient.name
+
+        return ingredients_list
+        # return IngredientsSerializer(ingredients, many=True).data

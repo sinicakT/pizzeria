@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     ingredients() {
-      return this.$store.state.offer.ingredients_list
+      return this.$store.state.menu.ingredients_list
     },
   },
   methods: {
