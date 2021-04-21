@@ -4,8 +4,8 @@ from django.db.models import Max
 
 from modelcluster.fields import ParentalKey
 
-from wagtail.core.models import Page, Orderable
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.core.models import Orderable
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 
 
 class Ingredient(models.Model):
