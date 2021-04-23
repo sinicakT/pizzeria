@@ -6,19 +6,19 @@ from .models import Pizza, Offer, Ingredient, Allergen
 class PizzaAdmin(ModelAdmin):
     model = Pizza
     # menulabel = 'Pizza'
-    menu_icon = 'pilcrow'
+    menu_icon = 'fa-pie-chart'
     menu_order = 100
     as_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ('number', 'name')
-    list_filter = ('number', )
+    # list_filter = ('number', )
     search_fields = ('number', 'name')
 
 
 class OfferAdmin(ModelAdmin):
     model = Offer
     menulabel = 'Ostatná ponuka'
-    menu_icon = 'pilcrow'
+    menu_icon = 'fa-tasks'
     menu_order = 100
     as_to_settings_menu = False
     exclude_from_explorer = False
@@ -29,7 +29,7 @@ class OfferAdmin(ModelAdmin):
 class IngredientAdmin(ModelAdmin):
     model = Ingredient
     menu_label = 'Prílohy'
-    menu_icon = 'edit'
+    menu_icon = 'fa-bookmark'
     menu_order = 100
     add_to_settings_menu = False
     exclude_from_explorer = False
@@ -41,7 +41,7 @@ class IngredientAdmin(ModelAdmin):
 class AllergenAdmin(ModelAdmin):
     model = Allergen
     menu_label = 'Alergény'
-    # menu_icon = 'edit'
+    menu_icon = 'fa-heart'
     menu_order = 100
     add_to_settings_menu = False
     exclude_from_explorer = False

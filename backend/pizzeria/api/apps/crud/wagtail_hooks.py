@@ -9,7 +9,7 @@ class SizeAdmin(ModelAdmin):
     menulabel = 'Veľkosti'
     # menu_icon = 'pilcrow'
     menu_order = 100
-    as_to_settings_menu = True
+    add_to_settings_menu = True
     exclude_from_explorer = True
     list_display = ('name', )
     # list_filter = ('name', )

@@ -67,7 +67,7 @@ class Pizza(ClusterableModel):
     class Meta:
         verbose_name = 'Pizza'
         verbose_name_plural = 'Pizze'
-        ordering = ['number']
+        # ordering = ['number']
 
     def get_next_number():
         allRecords = Pizza.objects.all()
