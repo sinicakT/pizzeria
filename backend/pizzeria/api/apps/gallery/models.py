@@ -22,8 +22,19 @@ class GalleryImage(Orderable):
         ImageChooserPanel("image"),
     ]
 
+
 class Gallery(ClusterableModel):
 
+    def __str__(self):
+        return self.name
+
+    name = models.CharField(max_length=255)
+
     panels = [
-        InlinePanel('images', label="Obrrázky")
+        FieldPanel('name'),
+        InlinePanel('images', label="Obrázky")
     ]
+
+    class Meta:
+        verbose_name = 'Galéria'
+        verbose_name_plural = 'Galérie'

@@ -116,6 +116,10 @@ class Offer(ClusterableModel):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'Menu'
+        verbose_name_plural = 'Menu'
+
     name = models.CharField(verbose_name='Názov', max_length=30)
 
     panels = [

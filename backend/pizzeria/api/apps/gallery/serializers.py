@@ -1,15 +1,12 @@
 from rest_framework import serializers
-from rest_framework.fields import Field
-from operator import itemgetter
 from .models import Gallery, GalleryImage
-import json
-import re
+from wagtail.images.views.serve import generate_image_url
 
-
-class ImageSerializedField(Field):
-
-    def to_representation(self, value):
-
+#
+#
+# class ImageSerializedField(Field):
+#
+#     def to_representation(self, value):
 
 
 class GalleryImageSerializer(serializers.ModelSerializer):
@@ -22,17 +19,17 @@ class GalleryImageSerializer(serializers.ModelSerializer):
         model = GalleryImage
         fields = ('url', 'preview_url')
 
-    def get_preview_url(self, image):
-        return image.image.get_rendition('width-300').url
+    def get_preview_url(self, obj):
+        return generate_image_url(obj.image, 'width-300')
 
-    def get_url(self, image):
-        return image.image.url
+    def get_url(self, obj):
+        width = 'width-' + str(obj.image.width)
+        return generate_image_url(obj.image, width)
 
 
 class GallerySerializer(serializers.ModelSerializer):
-
     images = GalleryImageSerializer(many=True)
 
     class Meta:
         model = Gallery
-        fields = ('images', )
+        fields = ('name', 'images')
