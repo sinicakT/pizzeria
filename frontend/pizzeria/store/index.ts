@@ -8,7 +8,7 @@ export const state = () => ({
     ingredients_list: [],
     offer: []
   },
-  gallery: []
+  galleries: []
 });
 
 export const mutations = {
@@ -30,18 +30,22 @@ export const mutations = {
 
     }
   },
-  setGallery(state: any, data: any) {
-    data.forEach((image: any, index: number) => {
-      image.index = index
+  setGalleries(state: any, data: any) {
+    var gallery_index = 0
+    data.forEach((gallery: any) => {
+      gallery.images.forEach((image: any) => {
+        image.gallery_index = gallery_index
+        gallery_index++
+      })
     })
-    state.gallery = data
+    state.galleries = data
 
   }
 };
 
 export const actions = {
   fetchAllData(vuexContext: any) {
-    return axios.get('http://127.0.0.1:8000/api/menu/')
+    return axios.get(process.env.baseUrl + '/api/menu/')
       .then(res => {
         const pizzas: any[] = [];
         res.data.pizza.forEach((pizza: any) => {
@@ -64,40 +68,15 @@ export const actions = {
       })
       .catch(e => console.log(e))
   },
-  fetchGallery(vuexContext:any, images:any) {
-    images = [
-      {
-        'preview_url': require('@/assets/images/pizzeria/pizza1.jpg'),
-        'detail_url': require('@/assets/images/pizzeria/pizza1.jpg')
-      },
-      {
-        'preview_url': require('@/assets/images/pizzeria/pizza2.jpg'),
-        'detail_url': require('@/assets/images/pizzeria/pizza2.jpg')
-      },
-      {
-        'preview_url': require('@/assets/images/pizzeria/pizza3.jpg'),
-        'detail_url': require('@/assets/images/pizzeria/pizza3.jpg')
-      },
-      {
-        'preview_url': require('@/assets/images/pizzeria/pizza4.jpg'),
-        'detail_url': require('@/assets/images/pizzeria/pizza4.jpg')
-      },
-      {
-        'preview_url': require('@/assets/images/pizzeria/pizza5.jpg'),
-        'detail_url': require('@/assets/images/pizzeria/pizza5.jpg')
-      },
-      {
-        'preview_url': require('@/assets/images/pizzeria/pizza6.jpg'),
-        'detail_url': require('@/assets/images/pizzeria/pizza6.jpg')
-      },
-      {
-        'preview_url': require('@/assets/images/pizzeria/pizza7.jpg'),
-        'detail_url': require('@/assets/images/pizzeria/pizza7.jpg')
-      },
-    ];
 
-    vuexContext.commit('setGallery', images)
+  fetchGalleries(vuexContext:any) {
+    return axios.get(process.env.baseUrl + '/api/gallery/')
+      .then(res => {
+        vuexContext.commit('setGalleries', res.data);
+      })
+      .catch(e => console.log(e))
   },
+
   setPizzas(vuexContext:any, pizzas:any) {
     vuexContext.commit('setPizzas', pizzas)
   },
@@ -125,7 +104,7 @@ export const getters = () => ({
   menu(state:any) {
     return state.menu
   },
-  gallery(state:any) {
-    return state.gallery
+  galleries(state:any) {
+    return state.galleries
   }
 })

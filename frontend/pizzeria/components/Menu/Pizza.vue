@@ -43,7 +43,7 @@
 export default {
   name: "Pizza",
   props: {
-    pizzas: [] = []
+    pizzas: []
   },
   // computed: {
   //   pizzas() {

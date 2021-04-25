@@ -40,6 +40,8 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    // https://image.nuxtjs.org/setup
+    // '@nuxt/image',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -79,5 +81,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  env: {
+    baseUrl: 'http://127.0.0.1:8000'
+  },
+  //
+  // image: {
+  //   cloudinary: {
+  //     baseUrl: 'http://127.0.0.1:8000'
+  //   }
+  // }
 }

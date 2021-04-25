@@ -7,7 +7,7 @@
             color="background darken1"
   >
       <v-card class="card" height="90vh" width="auto">
-        <v-img class="image" height="100%" :src="image" contain>
+        <v-img contain class="image" height="100%" :src="image">
           <v-btn id="close" @click="closeImageHandler()">
             <v-icon large color="secondary">
               mdi-close-thick
@@ -37,16 +37,26 @@ export default {
   },
   data() {
     return {
-      selected: 0
+      selected: 0,
     }
   },
   computed: {
     images() {
-      return this.$store.state.gallery
+      var images = []
+      this.$store.state.galleries.forEach(gallery => {
+        images = [...images, ...gallery.images]
+      })
+
+      return images
     },
     image() {
       if (this.images.length > 0) {
-        return this.images[this.selected].detail_url
+        const index = this.images.findIndex(image => {
+          return image.gallery_index == this.selected
+        });
+        console.log('index, image :', this.selected, this.images)
+        console.log('index, image :', index, this.images[index])
+        return 'http://127.0.0.1:8000' + this.images[index].url
       }
       return ''
     },
