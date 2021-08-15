@@ -8,7 +8,7 @@ class PizzaAdmin(ModelAdmin):
     # menulabel = 'Pizza'
     menu_icon = 'fa-pie-chart'
     menu_order = 100
-    as_to_settings_menu = False
+    add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ('number', 'name')
     # list_filter = ('number', )
@@ -20,7 +20,7 @@ class OfferAdmin(ModelAdmin):
     menulabel = 'Ostatná ponuka'
     menu_icon = 'fa-tasks'
     menu_order = 100
-    as_to_settings_menu = False
+    add_to_settings_menu = False
     exclude_from_explorer = False
     list_display = ('name', )
     search_fields = ('name', )

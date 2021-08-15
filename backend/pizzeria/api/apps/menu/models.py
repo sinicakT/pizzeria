@@ -28,6 +28,7 @@ class Ingredient(models.Model):
         FieldPanel('allergens'),
     ]
 
+
 class Allergen(models.Model):
 
     def get_next_number():
@@ -126,4 +127,3 @@ class Offer(ClusterableModel):
         FieldPanel('name'),
         InlinePanel('offer_item', label="Ponuka")
     ]
-
