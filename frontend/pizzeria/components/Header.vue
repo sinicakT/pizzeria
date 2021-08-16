@@ -15,7 +15,7 @@
       <div class="hidden-md-and-down ml-md-4 ml-lg-8 menu-box">
         <v-list nav>
                 <span v-for="item in menuItems" :key="item.title" class="mx-lg-2">
-                  <v-btn text class="secondary--text text--lighten-1 font-default font-weight-bold" router :to="item.link"> {{
+                  <v-btn text class="menu-item secondary--text text--lighten-1 font-default font-weight-bold scale-on-hover" router :to="item.link"> {{
                       item.title
                     }} </v-btn>
                 </span>
@@ -53,7 +53,7 @@
                    router
                    :to="item.link"
                    my-auto
-                   class="secondary--text text--lighten-1 font-default font-weight-bold"
+                   class="secondary--text text--lighten-1 font-default font-weight-bold scale-on-hover"
                    v-show="item.inDrawer"
                    :style="{
                           delay: (index * 0.1).toString() + 's',
@@ -145,7 +145,7 @@ export default {
   //background: $navbar-background !important;
   //background: var(--v-header_background-base) !important;
   z-index: 60 !important;
-  opacity: 0.95;
+  opacity: 0.6;
 
   .v-list--nav {
     background: none !important;
@@ -153,8 +153,7 @@ export default {
 }
 
 .v-navigation-drawer {
-  background: var(--v-drawer_background-base) !important;
-  opacity: 0.8 !important;
+  opacity: 0.7 !important;
 }
 
 .manual-v-layout {

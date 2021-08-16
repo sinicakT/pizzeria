@@ -23,7 +23,6 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    // '~/assets/scss/variables.scss',
     '~/assets/scss/main.scss'
   ],
 
@@ -66,14 +65,16 @@ export default {
       dark: true,
       themes: {
         dark: {
-          primary: '#00695C',
-          secondary: '#71c5ff',
+          // primary: '#00695C',
+          primary: '#1C1E21',
+          secondary: '#E8E9ED',
+          // secondary: '#FFF',
           accent: '#03a9f4',
           error: '#f44336',
           warning: '#ff9800',
           info: '#71c5ff',
           success: '#03a9f4',
-          background: '#00695C',
+          background: '#0f0f0f',
         }
       }
     }

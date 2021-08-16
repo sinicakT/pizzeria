@@ -1,11 +1,11 @@
 <template>
-  <v-container class="align-left py-10">
+  <v-container class="align-left py-10 px-6">
     <h4 class="pb-4">Prílohy</h4>
-    <v-row v-for="cattegory in Object.keys(ingredients)" :key="cattegory">
-      <v-col cols="6" md="8" class="py-0 text-caption">
+    <v-row v-for="cattegory in Object.keys(ingredients)" :key="cattegory" class="hover-row">
+      <v-col cols="6" md="8" class="py-0 text-caption font-weight-bold">
         {{ ingredients[cattegory] }}
       </v-col>
-      <v-col cols="6" md="4" class="py-0 text-caption">
+      <v-col cols="6" md="4" class="py-0 text-caption font-weight-bold">
         <v-col cols="7" md="6" class="pa-0"> </v-col>
         <v-col cols="5" md="6" class="pa-0">
           <span>{{ cattegory }} €</span>

@@ -52,11 +52,9 @@ export default {
     image() {
       if (this.images.length > 0) {
         const index = this.images.findIndex(image => {
-          return image.gallery_index == this.selected
+          return image.gallery_index === this.selected
         });
-        console.log('index, image :', this.selected, this.images)
-        console.log('index, image :', index, this.images[index])
-        return 'http://127.0.0.1:8000' + this.images[index].url
+        return process.env.baseUrl + this.images[index].url
       }
       return ''
     },

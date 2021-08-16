@@ -3,16 +3,16 @@
     <v-row v-for="category in offer" :key="offer.id" class="align-center" >
       <h3 class="mx-auto">{{ category.name }}</h3>
       <v-col cols="12">
-        <v-row v-for="(item, index) in category.offer_item" :key="offer.id + '.' + index">
+        <v-row v-for="(item, index) in category.offer_item" :key="offer.id + '.' + index" class="hover-row">
           <v-col cols="6" md="8">
-            <v-row class="font-weight-bold text-caption">
+            <v-row class="font-weight-bold text-subheading">
               <span>{{ item.name }}</span>
             </v-row>
-            <v-row class="text-body-2 text-caption">
+            <v-row class="text-caption font-weight-bold">
               <span> {{ item.description }} </span>
             </v-row>
           </v-col>
-          <v-col cols="6" md="4" class="py-0 text-caption">
+          <v-col cols="6" md="4" class="py-0 text-caption font-weight-bold">
             <v-col cols="7" md="6" class="pa-0">
               <span>{{ item.capacity }}</span>
             </v-col>

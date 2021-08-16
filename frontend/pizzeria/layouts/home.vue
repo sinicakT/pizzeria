@@ -2,7 +2,7 @@
   <v-app dark>
     <Header />
     <v-main class="main-container">
-      <v-container col-md-12>
+      <v-container col="12">
         <div class="background" />
         <nuxt />
       </v-container>
@@ -32,5 +32,15 @@ export default {
   color: var(--v-secondary-base) !important;
   overflow-y: auto !important;
   margin-top: 8vh;
+
+  .body {
+    background-image: url("~/static/background.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
 }
 </style>

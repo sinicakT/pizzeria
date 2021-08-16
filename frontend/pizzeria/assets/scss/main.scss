@@ -6,6 +6,12 @@
   url(~/assets/static/FrederickatheGreat-Regular.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "OleoScript";
+  src: local("OleoScript"),
+  url(~/assets/static/OleoScript-Regular.ttf) format("truetype");
+}
+
 .html {
   font-family: "FredericatheGreat", sans-serif !important;
 }
@@ -16,6 +22,15 @@
 
   .v-main {
     margin-top: 80px;
+  }
+}
+
+.scale-on-hover {
+  transition: 500ms;
+  transition-property: transform;
+
+  &:hover {
+    transform: scale(1.08);
   }
 }
 

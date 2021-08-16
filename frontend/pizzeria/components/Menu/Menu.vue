@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="offer-box">
     <!--    <h1>Jedálny lístok</h1>-->
     <v-row>
       <v-col cols="10">
@@ -10,7 +10,7 @@
           <Ingredient/>
         </v-row>
         <v-row>
-          <Offer />
+          <Offer/>
         </v-row>
       </v-col>
       <v-col cols="2" class="filter">
@@ -64,6 +64,24 @@ export default {
 </script>
 
 <style lang="scss">
+.offer-box {
+  background: rgba(15, 15, 15, 0.7);
+  opacity: 0.8;
+  padding: 0 2% 2% 3%;
+  border-radius: 20px;
+}
+
+.hover-row {
+  padding-left: 2%;
+  border-radius: 10px;
+
+  &:hover {
+    color: black;
+    background: rgba(white, 0.4);
+  }
+
+}
+
 .filter {
   display: inline;
 }

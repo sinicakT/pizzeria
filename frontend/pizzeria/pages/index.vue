@@ -1,26 +1,23 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
+    <v-col cols="12">
       <div class="text-center">
-        <logo />
-        <h1> Hlavná stránka </h1>
+        <HomeBanner />
       </div>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import HomeBanner from "~/components/HomeBanner";
 
 export default {
   components: {
-    Logo
+    HomeBanner
   },
-  computed: {
-
-  },
-  methods: {
-
-  }
+  layout: 'home'
 }
 </script>
+
+<style lang="scss">
+</style>
