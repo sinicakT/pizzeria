@@ -25,6 +25,7 @@ export default {
     ModalGalleryDetail,
     VueMasonryWall,
   },
+  layout: 'no_footer',
   data() {
     return {
       showDetail: false,

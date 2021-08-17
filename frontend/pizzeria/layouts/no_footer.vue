@@ -7,16 +7,16 @@
         <nuxt />
       </v-container>
     </v-main>
-
   </v-app>
 </template>
 
 <script>
 import Header from '~/components/Header'
+import Footer from '~/components/Footer'
 
 export default {
   components: {
-    Header
+    Header,
   },
 }
 </script>
@@ -32,15 +32,5 @@ export default {
   color: var(--v-secondary-base) !important;
   overflow-y: auto !important;
   margin-top: 8vh;
-
-  .body {
-    background-image: url("~/static/background.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-  }
 }
 </style>

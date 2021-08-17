@@ -4,7 +4,8 @@
 
 <script>
 export default {
-  name: 'kontakt'
+  name: 'kontakt',
+  layout: 'no_footer'
 }
 </script>
 
