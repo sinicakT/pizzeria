@@ -25,7 +25,7 @@
             </span>
         </v-row>
       </v-col>
-      <v-col cols="6" md="4" class="py-0 text-caption font-weight-bold">
+      <v-col cols="6" md="4" class="py-0 text-caption font-weight-bold price-box">
         <v-row v-for="size in pizza.size_values" :key="pizza.id + '.' + size.name">
           <v-col cols="7" md="6" class="pa-0">
             <span>{{size.name}} {{size.weight}}g</span>
@@ -54,5 +54,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.price-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 </style>
