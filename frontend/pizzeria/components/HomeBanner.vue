@@ -30,11 +30,29 @@ export default {
       position: absolute;
       top: 10%;
       left: 5%;
-      font-size: 4rem;
-      font-weight: 500;
       font-family: "OleoScript", sans-serif;
-      letter-spacing: 0.8rem;
       opacity: 0.9;
+      font-weight: 500;
+
+      @media (max-width: 600px) {
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: normal;
+      }
+      @media (min-width: 600px) {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 0.5rem;
+      }
+      @media (min-width: 960px) {
+        font-size: 3rem;
+        letter-spacing: 0.6rem;
+      }
+      @media (min-width: 1264px) {
+        font-size: 4rem;
+        letter-spacing: 0.8rem;
+      }
+
     }
   }
 </style>
